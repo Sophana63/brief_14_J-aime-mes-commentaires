@@ -20,7 +20,9 @@ pip install sphinx
 
 ## Utilisation
 
-La documentation Sphinx est héberger sous GitHub, [voici le lien](https://sophana63.github.io/brief_14_J-aime-mes-commentaires/).
+La documentation Sphinx est hébergée sous GitHub, [voici le lien](https://sophana63.github.io/brief_14_J-aime-mes-commentaires/).  
+Le fichier PDF généré se trouve dans le dossier [docs/pdf/brief14.pdf](https://github.com/Sophana63/brief_14_J-aime-mes-commentaires/blob/master/docs/pdf/brief14.pdf).
+
 
 
 
