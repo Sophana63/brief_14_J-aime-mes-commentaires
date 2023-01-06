@@ -1,10 +1,10 @@
-# ViveLesCollegues_Mehdi_Sophana
+# Brief 14 - J'aime mes commentaires !
 
-
+Le but du brief est de créer une documentation sur un ancien brief (Vive les collègues) sous Sphinx.
 
 ## Outils et langages
 
-Nous avons utilisé le langage Python et l'IDE VS Code pour ce brief.
+J'ai utilisé l'IDE VS Code et Sphinx. J'ai du aussi installer Pearl et Miktex pour utiliser la librairie latexmk afin de créer des 
 
 
 ## Librairies
