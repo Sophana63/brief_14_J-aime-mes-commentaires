@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>form_add &mdash; Documentation WikiBrief 1.0.0</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> WikiBrief
+          </a>
+              <div class="version">
+                1.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenus:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docs/form_add.html">Formulaire module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/git.html">Utilisation de Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/files.html">Fichiers utilisés par le formulaire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/librairies.html">Librairies utilisées</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/taches.html">Tâches effectuées en équipe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/rapport.html">Rapport final</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WikiBrief</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Code du module</a></li>
+      <li class="breadcrumb-item active">form_add</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Code source de form_add</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span><span class="o">*</span> 
+<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="n">ttk</span>
+<span class="kn">from</span> <span class="nn">tkcalendar</span> <span class="kn">import</span> <span class="n">Calendar</span><span class="p">,</span><span class="n">DateEntry</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="n">base</span> <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span>  
+
+<span class="n">base</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;500x500&#39;</span><span class="p">)</span>  
+<span class="n">base</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Ajout d&#39;employé&quot;</span><span class="p">)</span>  
+
+<span class="n">labl_0</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Ajout d&#39;un employé&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;bold&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>  
+<span class="n">labl_0</span><span class="o">.</span><span class="n">place</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">53</span><span class="p">)</span>  
+  
+<span class="c1">### Champ Nom</span>
+<span class="n">labl_1</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Nom&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;bold&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>  
+<span class="n">labl_1</span><span class="o">.</span><span class="n">place</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">130</span><span class="p">)</span>  
+
+<span class="n">entry_02</span> <span class="o">=</span> <span class="n">Entry</span><span class="p">(</span><span class="n">base</span><span class="p">)</span>  
+<span class="n">entry_02</span><span class="o">.</span><span class="n">place</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">240</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">130</span><span class="p">)</span>  
+
+<span class="c1">### Champ prénom</span>
+<span class="n">labl_2</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Prénom&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;bold&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>  
+<span class="n">labl_2</span><span class="o">.</span><span class="n">place</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">160</span><span class="p">)</span>  
+
+<span class="n">entry_03</span> <span class="o">=</span> <span class="n">Entry</span><span class="p">(</span><span class="n">base</span><span class="p">)</span>  
+<span class="n">entry_03</span><span class="o">.</span><span class="n">place</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">240</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">160</span><span class="p">)</span> 
+
+<span class="c1">### Champ date</span>
+<span class="n">labl_3</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;bold&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>  
+<span class="n">labl_3</span><span class="o">.</span><span class="n">place</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">190</span><span class="p">)</span>  
+
+<span class="n">entry_04</span> <span class="o">=</span> <span class="n">DateEntry</span><span class="p">(</span><span class="n">base</span><span class="p">,</span><span class="n">bg</span><span class="o">=</span><span class="s2">&quot;darkblue&quot;</span><span class="p">,</span><span class="n">fg</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span><span class="n">year</span><span class="o">=</span><span class="mi">2022</span><span class="p">)</span>
+<span class="n">entry_04</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">entry_04</span><span class="o">.</span><span class="n">place</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">240</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">190</span><span class="p">)</span> 
+  
+<span class="c1">### Champ métier</span>
+<span class="n">labl_4</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Profession&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;bold&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>  
+<span class="n">labl_4</span><span class="o">.</span><span class="n">place</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">220</span><span class="p">)</span>  
+
+<span class="n">listeProfession</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;./files/postes.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">listeProfession</span> <span class="o">=</span> <span class="n">listeProfession</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="n">entry_05</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Combobox</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="n">listeProfession</span><span class="p">)</span>
+<span class="n">entry_05</span><span class="o">.</span><span class="n">current</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">entry_05</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span> 
+<span class="n">entry_05</span><span class="o">.</span><span class="n">place</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">240</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">220</span><span class="p">)</span> 
+
+
+<span class="c1">#fonction pour envoyer</span>
+<div class="viewcode-block" id="envoyer"><a class="viewcode-back" href="../docs/form_add.html#form_add.envoyer">[docs]</a><span class="k">def</span> <span class="nf">envoyer</span><span class="p">():</span>    
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;./docs/csv/liste_employes.csv&#39;</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fichiercsv</span><span class="p">:</span>
+        <span class="n">writer</span><span class="o">=</span><span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">fichiercsv</span><span class="p">)</span>
+        <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">entry_03</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()),</span>  <span class="nb">str</span><span class="p">(</span><span class="n">entry_02</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()),</span> <span class="nb">str</span><span class="p">(</span><span class="n">entry_04</span><span class="o">.</span><span class="n">get</span><span class="p">()),</span>  <span class="nb">str</span><span class="p">(</span><span class="n">entry_05</span><span class="o">.</span><span class="n">get</span><span class="p">())])</span>  
+    <span class="n">base</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>    </div>
+
+<span class="c1">#bouton envoyer</span>
+<span class="n">Envoyer</span><span class="o">=</span> <span class="n">Button</span> <span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;ENVOYER&quot;</span><span class="p">,</span><span class="n">command</span><span class="o">=</span><span class="n">envoyer</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">place</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">240</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">280</span><span class="p">)</span>
+
+<span class="n">base</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enregistrement bien effectué.&quot;</span><span class="p">)</span> 
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Sophana.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
